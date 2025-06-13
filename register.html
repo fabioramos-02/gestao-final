@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro - Sistema de Gestão de Usuários</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/register.css" />
 </head>
 <body>
-    <header>
-        <h1>Cadastro - Sistema de Gestão de Usuários</h1>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Cadastro - Sistema de Gestão de Usuários</h1>
+        </header>
 
-    <main>
-        <section id="register">
-            <h2>Cadastrar Novo Usuário</h2>
-            <form id="registerForm">
-                <label for="newUsername">Novo Usuário:</label>
-                <input type="text" id="newUsername" name="newUsername" required>
+        <main>
+            <section id="register">
+                <h2>Cadastrar Novo Usuário</h2>
+                <form id="registerForm">
+                    <label for="newUsername">Novo Usuário:</label>
+                    <input type="text" id="newUsername" name="newUsername" required />
 
-                <label for="newPassword">Nova Senha:</label>
-                <input type="password" id="newPassword" name="newPassword" required>
+                    <label for="newPassword">Nova Senha:</label>
+                    <input type="password" id="newPassword" name="newPassword" required />
 
-                <button type="submit">Cadastrar</button>
-            </form>
-            <p>Já tem uma conta? <a href="login.html">Faça login aqui</a></p>
-        </section>
-    </main>
+                    <button type="submit">Cadastrar</button>
+                </form>
+                <p class="login-link">Já tem uma conta? <a href="login.html">Faça login aqui</a></p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Sistema de Gestão de Usuários</p>
+        </footer>
+    </div>
 
     <!-- Modal de Feedback -->
     <div id="modal" class="modal">
@@ -34,10 +40,6 @@
             <p id="modalMessage"></p>
         </div>
     </div>
-
-    <footer>
-        <p>&copy; 2025 Sistema de Gestão de Usuários</p>
-    </footer>
 
     <script src="./assets/js/register.js"></script>
 </body>
