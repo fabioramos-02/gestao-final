@@ -1,14 +1,39 @@
 document.addEventListener('DOMContentLoaded', function () {
     const btnSair = document.getElementById('btnSair');
-    const modal = document.getElementById('modal');
-    const closeBtn = document.querySelector('.close-btn');
+    const modal = document.getElementById('modal');  // Modal de cadastro
+    const closeBtn = document.querySelector('.close-btn');  // Fechar o modal de cadastro
     const userForm = document.getElementById('userForm');
     const submitBtn = document.getElementById('submitBtn');
     const collaboratorList = document.getElementById('collaboratorList');
     const btnAdicionarUsuario = document.getElementById('btnAdicionarUsuario');
+
+    // Modal de logout
+    const logoutModal = document.getElementById('logoutModal');
+    const confirmLogoutBtn = document.getElementById('confirmLogoutBtn');
+    const cancelLogoutBtn = document.getElementById('cancelLogoutBtn');
+    const closeLogoutBtn = document.querySelector('.close-btn-logout'); // Fechar o modal de logout
+
     let currentCollaboratorId = null;
 
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    const contactInput = document.getElementById('contact');
+
+    // Função para adicionar a máscara ao número de telefone
+    contactInput.addEventListener('input', function (e) {
+        let phoneNumber = e.target.value.replace(/\D/g, ''); // Remove tudo que não for número
+        if (phoneNumber.length <= 2) {
+            phoneNumber = `(${phoneNumber}`;
+        } else if (phoneNumber.length <= 6) {
+            phoneNumber = `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2)}`;
+        } else if (phoneNumber.length <= 10) {
+            phoneNumber = `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 10)}`;
+        } else {
+            phoneNumber = `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 11)}`;
+        }
+
+        e.target.value = phoneNumber; // Atualiza o valor do campo
+    });
 
     if (!loggedInUser) {
         alert("Você não está logado.");
@@ -16,29 +41,58 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
+    // Exibir o modal de confirmação ao clicar em "Sair"
     if (btnSair) {
         btnSair.addEventListener('click', () => {
-            localStorage.removeItem('loggedInUser');
-            window.location.href = 'login.html';
+            logoutModal.style.display = 'block';  // Mostrar o modal de logout
         });
     }
 
+    // Fechar o modal de logout se o usuário clicar no botão de fechar (X)
+    if (closeLogoutBtn) {
+        closeLogoutBtn.addEventListener('click', () => {
+            logoutModal.style.display = 'none';  // Fechar o modal de logout
+        });
+    }
+
+    // Fechar o modal de logout se o usuário clicar fora do modal
+    window.addEventListener('click', (e) => {
+        if (e.target === logoutModal) {
+            logoutModal.style.display = 'none';  // Fechar o modal de logout
+        }
+    });
+
+    // Quando o usuário confirmar o logout
+    confirmLogoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('loggedInUser');  // Remover o usuário da sessão
+        window.location.href = 'login.html';  // Redirecionar para a página de login
+    });
+
+    // Quando o usuário cancelar o logout
+    cancelLogoutBtn.addEventListener('click', () => {
+        logoutModal.style.display = 'none';  // Fechar o modal de logout e voltar para a página
+    });
+
+    // Exibir o modal de cadastro
     function showModal(title, actionText) {
         document.getElementById('modalTitle').textContent = title;
         submitBtn.textContent = actionText;
         modal.style.display = 'block';
     }
 
+    // Resetar o modal de cadastro
     function resetModal() {
         currentCollaboratorId = null;
         userForm.reset();
     }
 
+    // Fechar o modal de cadastro se o usuário clicar no botão de fechar (X)
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
         resetModal();
     });
 
+    // Fechar o modal de cadastro se o usuário clicar fora do modal
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
@@ -46,10 +100,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Abrir o modal de cadastro quando o botão for clicado
     btnAdicionarUsuario.addEventListener('click', () => {
         resetModal();
         showModal('Cadastrar Novo Colaborador', 'Cadastrar');
     });
+
 
     userForm.addEventListener('submit', (e) => {
         e.preventDefault();
