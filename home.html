@@ -33,6 +33,16 @@
         </table>
     </section>
 </main>
+
+<!-- Modal de Confirmação de Exclusão -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn-delete">&times;</span>
+        <h2>Tem certeza que deseja excluir este colaborador?</h2>
+        <button id="confirmDeleteBtn">OK</button>
+        <button id="cancelDeleteBtn">Cancelar</button>
+    </div>
+</div>
 <!-- Modal de Confirmação de Logout -->
 <div id="logoutModal" class="modal">
     <div class="modal-content">
@@ -64,7 +74,14 @@
         </form>
     </div>
 </div>
-
+<!-- Modal de Sucesso -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn-success">&times;</span>
+        <h2 id="successMessage">Ação realizada com sucesso!</h2>
+        <button id="successCloseBtn">Fechar</button>
+    </div>
+</div>
 <script src="./assets/js/gerenciarColaborador.js"></script>
 
 </body>

@@ -257,3 +257,114 @@ button:active {
 #cancelLogoutBtn {
     margin-right: 15px;
 }
+
+
+/* Modal de confirmação de exclusão */
+#deleteModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#deleteModal .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px 30px;
+    border-radius: 8px;
+    max-width: 450px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+}
+
+#deleteModal h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+#deleteModal button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin: 10px;
+}
+
+#confirmDeleteBtn {
+    background-color: #f44336;
+    color: white;
+}
+
+#confirmDeleteBtn:hover {
+    background-color: #d32f2f;
+}
+
+#cancelDeleteBtn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#cancelDeleteBtn:hover {
+    background-color: #45a049;
+}
+/* Modal de sucesso */
+#successModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#successModal .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px 30px;
+    border-radius: 8px;
+    max-width: 450px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+}
+
+#successModal h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+#successModal button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin: 10px;
+}
+
+#successCloseBtn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#successCloseBtn:hover {
+    background-color: #45a049;
+}
